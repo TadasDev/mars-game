@@ -1,0 +1,19 @@
+{
+    "name": "codeacademy/mars-game",
+    "description": "MVC web browsing game",
+    "type": "project",
+    "require": {
+        "psr/log": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "app/code"
+        }
+    },
+    "authors": [
+        {
+            "name": "Arnoldas",
+            "email": "nikaflash@gmail.com"
+        }
+    ]
+}

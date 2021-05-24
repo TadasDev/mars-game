@@ -1,0 +1,121 @@
+body{
+    /*background: url("../images/spacebg.jpeg") no-repeat;*/
+    /*background-size: cover;*/
+}
+.world{
+    background: url(../images/planet.png);
+    background-position: center center;
+    padding: 40px 0;
+    border-radius: 300px;
+    background-size: 118%;
+}
+body .navbar-default{
+    background-color: #201f27;
+}
+body .navbar{
+    margin-bottom: 0;
+}
+.map {
+    width: 1050px;
+    /*background: url(../images/marsbg.png) no-repeat;*/
+    background-size: cover;
+    margin:0 auto;
+}
+.y-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.field {
+    width: 35px;
+    height: 35px;
+    border-right: 1px dashed #D05A05;
+    border-bottom: 1px dashed #D05A05;
+}
+
+.sand {
+    background: url(../images/sand.png) no-repeat center center;
+    background-size: 99%;
+}
+
+.metal {
+    background: url(../images/metal.png) no-repeat center center;
+    background-size: 99%;
+}
+
+.clay {
+    background: url(../images/clay.png) no-repeat center center;
+    background-size: 99%;
+}
+
+.water {
+    background: url(../images/lake.png) no-repeat center center;
+    background-size: 99%;
+}
+
+.city{
+    background: #ff0000;
+}
+.city-wrapper{
+    max-width: 1400px;
+    min-height: 500px;
+    background: #D05A05;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.resource-wrapper{
+    max-width: 1400px;
+    min-height: 50px;
+    background: #D05A05;
+    margin: 0 auto;
+    border: 1px solid #000;
+    border-radius: 5px;
+    display: flex;
+}
+
+.content-white{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+}
+.resource-wrapper > div{
+    margin-left: 20px;
+}
+
+.city-base{
+    width: 400px;
+    height: 400px;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.city-base .column{
+    width: 99px;
+    height: 99px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.city-base .column .building{
+    width: 98px;
+    height: 98px;
+}
+
+.add-building{
+    background: #00ff00;
+    color: white;
+    font-weight: bold;
+    size: 16px;
+    padding: 5px;
+}
+
+.building.type-1{
+    background: url("../images/g15.png") no-repeat center center;
+    background-size: 90%;
+}
+
+
