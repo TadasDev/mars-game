@@ -39,11 +39,7 @@ class ModelAbstract
     public function update()
     {
         $db = new Db();
-        $db
-            ->update(static::TABLE_NAME)
-            ->set($this->prepeareArray())
-            ->where(self::ID_COLUMN, $this->id)
-            ->exec();
+        $db->update(static::TABLE_NAME)->set($this->prepeareArray())->where(self::ID_COLUMN, $this->id)->exec();
     }
 
     public function prepeareArray()

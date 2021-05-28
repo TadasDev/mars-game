@@ -3,7 +3,9 @@
 namespace Service\Map;
 
 use Helper\Url;
+use Model\City;
 use Model\MapField;
+use Model\User;
 use Service\Map\Generator;
 
 class Loader
@@ -23,12 +25,22 @@ class Loader
 
     public function generate($fields)
     {
+        $user = new User();
         $sortedFields = [];
         foreach($fields as $field){
             $sortedFields[$field['y']][$field['x']] = $field;
             $sortedFields[$field['y']][$field['x']]['class'] = $this->fieldClasses[$field[MapField::FIELD_TYPE_COLUMN]];
             $sortedFields[$field['y']][$field['x']]['link'] = $this->getLink($field);
-
+            if($field['user_id'] !== null){
+                $sortedFields[$field['y']][$field['x']]['owner'] = $user->load($field['user_id']);
+            }
+            if($sortedFields[$field['y']][$field['x']]['class'] !== 'city'){
+                $sortedFields[$field['y']][$field['x']]['field_name'] = $sortedFields[$field['y']][$field['x']]['class'];
+            }else{
+                $city = new City();
+                $city->loadByMapFieldId($field['id']);
+                $sortedFields[$field['y']][$field['x']]['field_name'] = $city->getName();
+            }
         }
 
         return $sortedFields;

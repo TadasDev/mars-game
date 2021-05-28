@@ -1,6 +1,6 @@
 body{
-    /*background: url("../images/spacebg.jpeg") no-repeat;*/
-    /*background-size: cover;*/
+    background: url("../images/spacebg.jpeg") no-repeat;
+    background-size: cover;
 }
 .world{
     background: url(../images/planet.png);
@@ -30,6 +30,7 @@ body .navbar{
     height: 35px;
     border-right: 1px dashed #D05A05;
     border-bottom: 1px dashed #D05A05;
+    position: relative;
 }
 
 .sand {
@@ -118,4 +119,18 @@ body .navbar{
     background-size: 90%;
 }
 
+.field.current-user-field{
+    border: 1px solid #00ff00;
+}
+
+.field:hover .info-box{
+    display: block;
+}
+.info-box{
+    display: none;
+    position: absolute;
+    top:30px;
+    background: #fff;
+    right: 30px;
+}
 

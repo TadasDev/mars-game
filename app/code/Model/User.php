@@ -73,16 +73,15 @@ class User extends ModelAbstract
     public function load($id)
     {
         $db = new Db();
-        $user = $db
-            ->select()
-            ->from(DB::USER_TABLE)
-            ->where(self::ID_COLUMN, $id)
-            ->getOne();
+        $user = $db->select()->from(DB::USER_TABLE)->where(self::ID_COLUMN, $id)->getOne();
         $this->id = $user[self::ID_COLUMN];
         $this->userName = $user[self::NAME_COLUMN];
         $this->email = $user[self::EMAIL_COLUMN];
         $this->password = $user[self::PASSWORD_COLUMN];
+
         return $this;
+
+
     }
 
     public function loadByEmail($email)
@@ -90,6 +89,7 @@ class User extends ModelAbstract
         $db = new Db();
         $user = $db->select()->from(self::TABLE_NAME)->where(self::EMAIL_COLUMN, $email)->getOne();
         $this->load($user['id']);
+
         return $this;
     }
 
@@ -127,7 +127,7 @@ class User extends ModelAbstract
 
     public static function getAllUsers()
     {
-        $db = new DB;
+        $db = new Db();
         $result = $db->select()->from(self::TABLE_NAME)->get();
         return $result;
     }

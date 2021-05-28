@@ -66,11 +66,7 @@ class City extends ModelAbstract
     public function load($id)
     {
         $db = new Db;
-        $result = $db
-            ->select()
-            ->from(self::TABLE_NAME)
-            ->where(self::ID_COLUMN, $id)
-            ->getOne();
+        $result = $db->select()->from(self::TABLE_NAME)->where(self::ID_COLUMN, $id)->getOne();
         $this->id = $result[self::ID_COLUMN];
         $this->name = $result[self::NAME_COLUMN];
         $this->mapFieldId = $result[self::MAP_FIELD_ID_COLUMN];
@@ -81,10 +77,7 @@ class City extends ModelAbstract
     public function loadByMapFieldId($mapFieldId)
     {
         $db = new Db();
-        $result = $db->select()
-            ->from(self::TABLE_NAME)
-            ->where(self::MAP_FIELD_ID_COLUMN, $mapFieldId)
-            ->getOne();
+        $result = $db->select()->from(self::TABLE_NAME)->where(self::MAP_FIELD_ID_COLUMN, $mapFieldId)->getOne();
         if(!empty($result)){
             $this->load($result[self::ID_COLUMN]);
             return $this;

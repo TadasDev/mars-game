@@ -137,7 +137,8 @@ class Building extends ModelAbstract
     public static function loadByCityId($cityId)
     {
         $db = new Db();
-        $result = $db->select(self::ID_COLUMN)
+        $result = $db
+            ->select(self::ID_COLUMN)
             ->from(self::TABLE_NAME)
             ->where(self::CITY_ID_COLUMN, $cityId)
             ->get();
@@ -167,6 +168,7 @@ class Building extends ModelAbstract
 
     public function prepeareArray()
     {
+
         return [
           self::BUILDING_TYPE_ID_COLUMN => $this->buildinTypeId,
           self::CITY_ID_COLUMN => $this->cityId,

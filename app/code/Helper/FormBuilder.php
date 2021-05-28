@@ -29,9 +29,14 @@ class FormBuilder
         return $this;
     }
 
-    public function select()
+    public function select($name, $options)
     {
-
+        $this->form .= "<select name='$name'>";
+        foreach ($options as $key => $option){
+            $this->form .= "<option value='$key'>$option</option>";
+        }
+        $this->form .= "</select>";
+        return $this;
     }
 
     public function texarea($name)

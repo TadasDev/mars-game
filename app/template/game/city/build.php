@@ -1,3 +1,3 @@
-<?php
-    echo 'cia bus galima staty pastata';
-?>
+<div class="city-wrapper">
+        <?php echo $data['form'] ?>
+</div>

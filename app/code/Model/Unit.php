@@ -75,11 +75,7 @@ class Unit extends ModelAbstract
     public static function getUserUnitsIds($cityId)
     {
         $db = new Db();
-        $result = $db
-            ->select('id')
-            ->from(self::TABLE_NAME)
-            ->where(self::CITY_ID_COLUMN, $cityId)
-            ->exec();
+        $result = $db->select('id')->from(self::TABLE_NAME)->where(self::CITY_ID_COLUMN, $cityId)->exec();
         return $result;
     }
 }

@@ -8,6 +8,7 @@ use Helper\Url;
 use Model\City;
 use Model\MapField;
 use Model\User as UserModel;
+use Model\Collection\Users;
 use Core\Request;
 use Helper\Validation\InputValidation as Validation;
 use Service\Map\Field\AssignField;
@@ -139,7 +140,8 @@ class User extends Controller
 
     public function stats()
     {
-        $users = UserModel::getAllUsers();
+        $usersCollection = new Users();
+        $users = $usersCollection->getCollection();
         $this->data['users'] = $users;
         $this->render('user/list', $this->data);
     }

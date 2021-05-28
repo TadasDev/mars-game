@@ -34,7 +34,7 @@ class Generator
                 $y = $y + 2;
             }
         }else{
-            echo 'Map already exist;';
+            echo 'Map allready exist;';
         }
     }
 

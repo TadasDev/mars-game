@@ -11,7 +11,7 @@ class Contact extends Controller
 {
     public function index()
     {
-        $form = new FormBuilder('post', 'contact/submit');
+        $form = new FormBuilder('post', '/contact/submit');
         if(!$this->isLogedIn()){
             $form->input('email', 'email','','Contact Email');
         }

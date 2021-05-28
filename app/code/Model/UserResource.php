@@ -80,7 +80,7 @@ class UserResource extends ModelAbstract
     }
 
     /**
-     * @param int $value
+     * @param int
      */
     public function setValue(int $value): void
     {
@@ -113,6 +113,17 @@ class UserResource extends ModelAbstract
         return $this;
     }
 
+    public function loadUserResource($userId, $resourceID)
+    {
+        $db = new Db();
+        $resource = $db->select()->from(self::TABLE_NAME)
+            ->where(self::RESOURCE_ID_COLUMN, $resourceID)
+            ->whereAnd(self::USER_ID_COLUMN, $userId)->getOne();
+        $this->load($resource[self::ID_COLUMN]);
+        return $this;
+    }
+
+
     public function loadUserResourses($userId)
     {
         $db = new Db();
@@ -125,6 +136,4 @@ class UserResource extends ModelAbstract
             ->get();
         return $resources;
     }
-
-
 }

@@ -60,9 +60,6 @@ class Db
     public function getOne()
     {
         $statment = $this->pdo->query($this->sql);
-
-//        echo $this->sql;
-//        die();
         $rez = [];
         while ($row = $statment->fetch()) {
             $rez[] = $row;

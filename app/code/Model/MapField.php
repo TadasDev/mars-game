@@ -24,16 +24,6 @@ class MapField extends ModelAbstract
 
     private $city;
 
-    private $fieldName;
-
-    /**
-     * @return mixed
-     */
-    public function getFieldName()
-    {
-        return $this->fieldName;
-    }
-
     /**
      * @return mixed
      */
@@ -127,20 +117,12 @@ class MapField extends ModelAbstract
     public function load($id)
     {
         $db = new Db;
-        $result = $db
-            ->select(self::TABLE_NAME.'.*, field_type.name')
-            ->from(self::TABLE_NAME)
-            ->left('field_type')
-            ->on(self::TABLE_NAME,self::FIELD_TYPE_COLUMN,'field_type','id')
-            ->where(self::TABLE_NAME.'.'. self::ID_COLUMN, $id)
-            ->getOne();
-
+        $result = $db->select()->from(static::TABLE_NAME)->where(self::ID_COLUMN, $id)->getOne();
         $this->id = $result[self::ID_COLUMN];
         $this->x = $result[self::X_COLUMN];
         $this->y = $result[self::Y_COLUMN];
         $this->fieldTypeId = $result[self::FIELD_TYPE_COLUMN];
         $this->userId = $result[self::USER_ID_COLUMN];
-        $this->fieldName = $result['name'];
         return $this;
     }
 
@@ -160,7 +142,5 @@ class MapField extends ModelAbstract
         $result = $db->select()->from(self::TABLE_NAME)->where(self::USER_ID_COLUMN, $userId)->get();
         return $result;
     }
-
-
 
 }
