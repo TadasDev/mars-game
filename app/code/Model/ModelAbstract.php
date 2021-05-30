@@ -32,7 +32,6 @@ class ModelAbstract
     {
         $db = new Db();
         $record = $db->insert(static::TABLE_NAME)->values($this->prepeareArray())->exec();
-        $this->load($record);
 
     }
 

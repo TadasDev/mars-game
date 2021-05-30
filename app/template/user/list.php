@@ -1,9 +1,14 @@
-<ol>
+<div class="city-wrapper"
+
+<ul style="text-align: center">
 <?php foreach ($data['users'] as $user): ?>
-    <li>
-        <a href="<?php echo BASE_URL.'/user/view/'.$user->getId(); ?> ">
+
+    <li style="list-style-type: decimal-leading-zero">
+
+        <a style="color: white" href = <?php echo BASE_URL.'/user/view/'.$user->getId();?> >
             <?php echo $user->getUserName() ?>
         </a>
     </li>
 <?php endforeach; ?>
-</ol>
+</ul>
+</div>

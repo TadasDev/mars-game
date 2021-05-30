@@ -108,7 +108,9 @@ class MapField extends ModelAbstract
     {
         $db = new Db();
 
-        $result = $db->select()->from(static::TABLE_NAME)->where(self::X_COLUMN, $x)->whereAnd(self::Y_COLUMN, $y)->get();
+        $result = $db->select()->from(static::TABLE_NAME)
+            ->where(self::X_COLUMN, $x)
+            ->whereAnd(self::Y_COLUMN, $y)->get();
         // $result = $db->select()->from('map_field')->where('x', $x)->whereAnd('y',$y)->get(); same like ^^^^^
 
         return empty($result) ? true : false;

@@ -31,6 +31,8 @@
                         <li><a href="<?php echo BASE_URL ?>/user/edit">My account</a></li>
                         <li><a href="<?php echo BASE_URL ?>/user/logout">Logout</a></li>
                         <li><a href="<?php echo BASE_URL ?>/controllerduk/index">DUK</a></li>
+                        <li><a href="<?php echo BASE_URL ?>/user/stats">Players list</a></li>
+                        <li><a href="<?php echo BASE_URL ?>/messages/inbox">Messages</a></li>
                     <?php endif; ?>
                 </ul>
             </div>

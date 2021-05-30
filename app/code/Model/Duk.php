@@ -10,16 +10,6 @@ class Duk
 
     private $duk;
 
-//    public  $questions;
-//
-//    /**
-//     * @return mixed
-//     */
-//    public function getQuestions()
-//    {
-//        return $this->questions;
-//    }
-
     public function getDuk()
     {
 
@@ -27,6 +17,7 @@ class Duk
         $results =  $db->select()->from(self::DUK)->get();
         foreach ($results as $result){
             $this->duk[] = $result;
+
         }
 
         return $this->duk;
