@@ -6,14 +6,6 @@ use Core\Controller;
 use Helper\FormBuilder;
 use Core\Request;
 use Helper\Url;
-use Model\Collection\Users;
-use Model\Contact as ContactModel;
-use Core\Db;
-use Model\ModelAbstract;
-use Model\User;
-use Session\Message;
-use Core\Session;
-
 
 class Messages extends Controller
 {
@@ -41,23 +33,23 @@ class Messages extends Controller
     public function sendMessage()
     {
         // create
-            $request = new Request();
-            $messages = new \Model\Messages();
-            // Sender ID
-            $userId = $this->userSession->getAuthUserId();
-            //  POST
-            $subject = $request->getPost('subject');
-            $message = $request->getPost('message');
-            $recipientId = $request->getPost('recipientId');
-            // Set message data
-            $messages->setSubject(trim($subject,' '));
-            $messages->setMessage(trim($message,' '));
-            $messages->setSenderId($userId);
-            $messages->setRecipientId($recipientId);
-            $messages->save();
-            $this->message->setSuccessMessage('Message Sent');
-            //redirect to
-            Url::redirect(Url::make('/user/stats'));
+        $request = new Request();
+        $messages = new \Model\Messages();
+        // Sender ID
+        $userId = $this->userSession->getAuthUserId();
+        //  POST
+        $subject = $request->getPost('subject');
+        $message = $request->getPost('message');
+        $recipientId = $request->getPost('recipientId');
+        // Set message data
+        $messages->setSubject(trim($subject,' '));
+        $messages->setMessage(trim($message,' '));
+        $messages->setSenderId($userId);
+        $messages->setRecipientId($recipientId);
+        $messages->save();
+        $this->message->setSuccessMessage('Message Sent');
+        //redirect to
+        Url::redirect(Url::make('/user/stats'));
 
     }
 
@@ -65,16 +57,16 @@ class Messages extends Controller
     public function inbox()
     {
         if ($this->isLogedIn()) {
-
             $message = new \Model\Messages();
 
             $userId = $this->userSession->getAuthUserId();
+
             $messageTable = $message->getAllMessages($userId);
             $this->data['data'] = $messageTable;
             if (empty($messageTable)) {
+
                 $this->message->setErrorMessage('empty Inbox');
             }
-
             $this->render('/user/inbox', $this->data);
         }
     }
