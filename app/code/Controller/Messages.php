@@ -85,8 +85,6 @@ class Messages extends Controller
                 $dataMessage = $message->loadUserMessage($userId, $messageId);
                 $messageSetToSeen = $message->isRead($messageId);
 
-                $Ram = $message->newNotification($userId);
-
                 $this->data['messages'] = $dataMessage;
                 $this->render('/user/message', $this->data);
 
