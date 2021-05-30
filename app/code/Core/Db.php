@@ -132,6 +132,12 @@ class Db
         return $this;
     }
 
+    public function setOne($field,$value)
+    {
+        $this->sql .= ' SET '.$field.'="' . $value . '"';
+        return$this;
+    }
+
     public function whereAnd($field, $value)
     {
         $this->sql .= ' AND ' . $field . '="' . $value . '"';
@@ -153,6 +159,18 @@ class Db
     public function on($table1, $column1, $table2, $column2)
     {
         $this->sql .= 'ON '.$table1.'.'.$column1 .' = '.$table2.'.'.$column2.' ';
+        return $this;
+    }
+
+    public function count($value)
+    {
+        $this->sql .= ', COUNT('.$value.') ';
+        return $this;
+    }
+
+    public function groupBy($field)
+    {
+        $this->sql .= ' GROUP BY '. $field;
         return $this;
     }
 

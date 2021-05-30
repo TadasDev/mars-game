@@ -28,8 +28,7 @@
 
     }
 </style>
-<?php  $messages = $data['data'];
-; ?>
+<?php  $messages = $data['data']; ?>
 
 <div class="city-wrapper">
     <div class="inbox">

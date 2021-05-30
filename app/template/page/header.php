@@ -13,6 +13,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+<style>
+    .notification {
+        background-color: #555;
+        color: white;
+        text-decoration: none;
+        padding: 15px 26px;
+        position: relative;
+        display: inline-block;
+        border-radius: 2px;
+    }
+
+    .notification:hover {
+        background: red;
+    }
+    .notification.badge{
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        padding: 5px 10px;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+
+</style>
+
+
+
 <body>
 <div class="container">
     <header>
@@ -32,7 +59,22 @@
                         <li><a href="<?php echo BASE_URL ?>/user/logout">Logout</a></li>
                         <li><a href="<?php echo BASE_URL ?>/controllerduk/index">DUK</a></li>
                         <li><a href="<?php echo BASE_URL ?>/user/stats">Players list</a></li>
-                        <li><a href="<?php echo BASE_URL ?>/messages/inbox">Messages</a></li>
+                        <li><a class="notification" href="<?php echo BASE_URL ?>/messages/inbox">
+                                <span>Messages</span>
+                                <span class="badge">
+                                    <?php
+                                    $messageCount = new \Model\Messages();
+                                    $user = new \Session\User();
+
+                                    $counts = $messageCount->newNotification($user->getAuthUserId());
+                                    if (!empty($counts)){
+                                        echo $counts[0]['COUNT(1)'];
+                                    }else echo '0';
+                                    ?>
+                                </span>
+                            </a>
+
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>

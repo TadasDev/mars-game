@@ -11,11 +11,29 @@ class Messages extends ModelAbstract
     public const SENDER = 'sender_id';
     public const RECIPIENT = 'recipient_id';
     public const MESSAGE_ID = 'id';
+    public const IS_READ = 'is_read';
 
     public $message;
     public $subject;
     public $senderId;
     public $recipientId;
+    public $isRead;
+
+    /**
+     * @return int
+     */
+    public function getIsRead(): int
+    {
+        return $this->isRead;
+    }
+
+    /**
+     * @param int $isRead
+     */
+    public function setIsRead(int $isRead): void
+    {
+        $this->isRead = $isRead;
+    }
 
     /**
      * @return mixed
@@ -87,7 +105,8 @@ class Messages extends ModelAbstract
             self::SENDER => $this->senderId,
             self::RECIPIENT => $this->recipientId,
             self::MESSAGES => $this->message,
-            self::SUBJECT=>$this->subject
+            self::SUBJECT=>$this->subject,
+            self::IS_READ =>$this->isRead
         ];
 
     }
@@ -112,6 +131,27 @@ class Messages extends ModelAbstract
             ->where(self::RECIPIENT,$id)
             ->whereAnd(self::MESSAGE_ID, $messageId)
             ->get();
+
+        return $results;
+    }
+
+    public function isRead($messageId)
+    {
+        $db = new Db();
+        $results = $db
+            ->update(self::TABLE_NAME)
+            ->setOne(self::IS_READ,'1')
+            ->where(self::MESSAGE_ID,$messageId)->exec();
+    }
+
+    public function newNotification($id){
+
+        $db = new Db();
+        $results = $db->select(self::IS_READ)
+            ->count(1)
+            ->from(self::TABLE_NAME)
+            ->where(self::IS_READ,'0')->whereAnd(self::RECIPIENT,$id)
+            ->groupBy(self::IS_READ)->get();
 
         return $results;
     }

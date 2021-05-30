@@ -46,6 +46,7 @@ class Messages extends Controller
         $messages->setMessage(trim($message,' '));
         $messages->setSenderId($userId);
         $messages->setRecipientId($recipientId);
+        $messages->setIsRead(0);
         $messages->save();
         $this->message->setSuccessMessage('Message Sent');
         //redirect to
@@ -82,6 +83,9 @@ class Messages extends Controller
 
                 $userId = $this->userSession->getAuthUserId();
                 $dataMessage = $message->loadUserMessage($userId, $messageId);
+                $messageSetToSeen = $message->isRead($messageId);
+
+                $Ram = $message->newNotification($userId);
 
                 $this->data['messages'] = $dataMessage;
                 $this->render('/user/message', $this->data);
